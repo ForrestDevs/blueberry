@@ -1,0 +1,47 @@
+name: Blueberry
+options:
+  bundleIdPrefix: dev.forrest
+  deploymentTarget:
+    macOS: "15.0"
+packages:
+  BlueberryAgent:
+    path: .
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    # Set via `DEVELOPMENT_TEAM=XXXXXXXXXX xcodegen` or edit here once.
+    DEVELOPMENT_TEAM: ${DEVELOPMENT_TEAM}
+targets:
+  Blueberry:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources/BlueberryAgent
+      - path: App/Assets.xcassets
+        optional: true
+    dependencies:
+      - package: BlueberryAgent
+        product: BlueberryCore
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Blueberry
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.social-networking
+        NSAppleEventsUsageDescription: Blueberry controls Messages to send iMessages on your behalf.
+    entitlements:
+      path: App/Blueberry.entitlements
+      properties:
+        # Needed to drive Messages via Apple Events. No App Sandbox: chat.db needs Full Disk Access.
+        com.apple.security.automation.apple-events: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.forrest.blueberry
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "Developer ID Application"
+      configs:
+        Debug:
+          CODE_SIGN_IDENTITY: "Apple Development"

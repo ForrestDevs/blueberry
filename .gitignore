@@ -9,3 +9,12 @@ release/
 .swiftpm
 .yarn
 .yarnrc*
+# Blueberry
+server/node_modules/
+server/*.sqlite*
+server/test/*.sqlite*
+server/test/*.log
+agent/.build/
+agent/*.xcodeproj
+agent/build/
+.DS_Store

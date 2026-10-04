@@ -1,0 +1,22 @@
+{
+  "name": "@blueberry/server",
+  "version": "0.1.0",
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "typescript": "^7.0.2"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch src/main.ts",
+    "start": "bun src/main.ts",
+    "cli": "bun src/cli.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "type": "module",
+  "dependencies": {
+    "@effect/platform-bun": "4.0.0",
+    "@effect/sql-sqlite-bun": "4.0.0",
+    "effect": "4.0.0"
+  }
+}
